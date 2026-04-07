@@ -72,8 +72,7 @@ pub fn main() {
         cpu.update_timers();
         cpu.display.render();
         cpu.display.present();
-        ram.dump_memory();
-        std::thread::sleep(Duration::from_millis(1000 / 60));
+        std::thread::sleep(Duration::from_millis(1000 / 55));
     }
     println!();
     println!("Emulator stopped.");

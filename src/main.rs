@@ -33,7 +33,7 @@ pub fn main() {
     let mut cpu: Chip8CPU = Chip8CPU::new(display);
 
     let argument: String = env::args().nth(1).expect("Please provide an argument");
-    let path: String = format!("../test_roms/roms/{}", argument);
+    let path: String = argument;
     ram.get_rom_file(&path);
 
     ram.dump_memory();

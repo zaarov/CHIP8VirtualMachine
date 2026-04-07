@@ -32,7 +32,7 @@
       ];
 
       shellHook = ''
-        echo "🦀 Rust environment activated."
+        echo "Rust environment activated."
         echo "Cargo: $(cargo --version)"
         echo "SDL2 version: $(pkg-config --modversion sdl2 2>/dev/null || echo 'not found')"
       '';

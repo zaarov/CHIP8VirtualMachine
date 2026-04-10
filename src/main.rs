@@ -47,20 +47,6 @@ pub fn main() {
                     keycode: Some(Keycode::Escape),
                     ..
                 } => break 'running,
-
-                Event::KeyDown {
-                    keycode: Some(Keycode::Space),
-                    ..
-                } => {
-                    let opcode: u16 = ((ram.read(cpu.pc as usize) as u16) << 8)
-                        | ram.read((cpu.pc + 1) as usize) as u16;
-
-                    println!("PC: 0x{:04X} | Opcode: 0x{:04X}", cpu.pc, opcode);
-
-                    cpu.cycle(&mut ram, &mut keyboard);
-                    cpu.display.present();
-                }
-
                 _ => {
                     keyboard.handle_sdl_event(&event);
                 }
@@ -71,8 +57,7 @@ pub fn main() {
         }
         cpu.update_timers();
         cpu.display.render();
-        cpu.display.present();
-        std::thread::sleep(Duration::from_millis(1000 / 55));
+        std::thread::sleep(Duration::from_millis(1000 / 60));
     }
     println!();
     println!("Emulator stopped.");

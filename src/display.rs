@@ -49,6 +49,7 @@ impl Chip8Display {
     }
 
     pub fn clear(&mut self) {
+        self.pixels = [[false; 64]; 32];
         self.canvas.set_draw_color(self.black);
         self.canvas.clear();
     }
@@ -79,5 +80,6 @@ impl Chip8Display {
                 }
             }
         }
+        self.present();
     }
 }
